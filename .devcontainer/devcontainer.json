@@ -1,0 +1,45 @@
+{
+  "image": "ghcr.io/ebizbase/universal-devcontainer:0.1.7",
+  "runArgs": ["--name=ebizbase-semver-devcontainer"],
+  "mounts": [
+    "source=ebizbase-semver-devcontainer-dind,target=/var/lib/docker,type=volume"
+  ],
+  "remoteUser": "vscode",
+  "postCreateCommand": "yarn install",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.associations": {
+          "*.json": "jsonc"
+        },
+        "files.exclude": {
+          "**/.git": true,
+          "**/.svn": true,
+          "**/.hg": true,
+          "**/.DS_Store": true,
+          "**/Thumbs.db": true,
+          "trunk-*": true
+        },
+        "json.schemas": [
+          {
+            "fileMatch": ["*/devcontainer-feature.json"],
+            "url": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainerFeature.schema.json"
+          },
+          {
+            "fileMatch": ["*/devcontainer.json"],
+            "url": "https://github.com/devcontainers/spec/raw/refs/heads/main/schemas/devContainer.schema.json"
+          }
+        ]
+      },
+      "extensions": [
+        "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
+        "shd101wyy.markdown-preview-enhanced",
+        "steoates.autoimport",
+        "github.vscode-github-actions",
+        "redhat.vscode-yaml",
+        "mads-hartmann.bash-ide-vscode"
+      ]
+    }
+  }
+}
